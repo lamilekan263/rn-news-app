@@ -1,0 +1,5 @@
+[*] set up file config
+[*] push to git 
+[]set up file structure
+[]set up themes and other config
+[] set up navigation
