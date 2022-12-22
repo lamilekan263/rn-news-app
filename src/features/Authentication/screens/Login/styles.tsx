@@ -2,12 +2,14 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { theme } from '../../../../infracstruture/theme';
 
 export const styles = StyleSheet.create({
-  container: {
+  safeAreaContainer: {
     flex: 1,
     marginTop: StatusBar.currentHeight ? StatusBar.currentHeight : 50,
-    paddingHorizontal: theme.spacing.xl,
     backgroundColor: theme.colors.white,
+  },
+  container: {
     position: 'relative',
+    paddingHorizontal: theme.spacing.xl,
   },
   welcomeText: {
     fontFamily: theme.font.fontFamilyBold,

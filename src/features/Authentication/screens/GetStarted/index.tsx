@@ -23,7 +23,7 @@ const GetStarted = () => {
         <View style={styles.buttonContainer}>
           <Pressable
             style={styles.button}
-            onPress={() => navigation.navigate('Login')}>
+            onPress={(): void => navigation.navigate('Login')}>
             <Text style={styles.buttonText}>Get Started</Text>
           </Pressable>
         </View>
