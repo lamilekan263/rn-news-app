@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
     lineHeight: theme.spacing.xxl,
     fontFamily: theme.font.fontFamilyMedium,
   },
+  bookmarkIcon: {
+    alignItems: 'flex-end',
+  },
 });
 
 export default styles;

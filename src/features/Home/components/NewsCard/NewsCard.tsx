@@ -1,29 +1,29 @@
-import { View, Text, ImageBackground, Pressable } from 'react-native';
+import { View, ImageBackground, Pressable, Text } from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
+import { theme } from '../../../../infracstruture/theme';
 
 const NewsCard = ({ newsItem }) => {
   const navigation = useNavigation();
 
+  const { urlToImage, title } = newsItem;
+
   return (
-    <Pressable onPress={() => navigation.navigate('NewsArticle')}>
+    <Pressable
+      onPress={() => navigation.navigate('NewsArticle', { data: newsItem })}>
       <ImageBackground
         source={{
-          uri: 'https://images.pexels.com/photos/709143/pexels-photo-709143.jpeg?auto=compress&cs=tinysrgb&w=800',
+          uri: urlToImage,
         }}
         style={styles.imageBackground}>
         <View style={styles.content}>
-          <View>
-            {' '}
-            <Icon name="access-alarms" size={30} color="#900" />
+          <View style={styles.bookmarkIcon}>
+            <Icon name="bookmark" size={30} color={theme.colors.white} />
           </View>
           <View>
-            {/* <Text style={styles.title}>{newsItem?.title}</Text> */}
-            {/* <Text style={styles.subtitle}>
-              The latest situation in the presidential election
-            </Text> */}
+            <Text style={styles.title}>{title}</Text>
           </View>
         </View>
       </ImageBackground>

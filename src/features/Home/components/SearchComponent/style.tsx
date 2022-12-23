@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     width: '100%',
+    marginLeft: 20,
+    height: '100%',
   },
 });
 
