@@ -5,28 +5,19 @@ import SafeAreaComponent from '../../../../components/SafeAreaView';
 import { styles } from './styles';
 import NewsCard from '../../components/NewsCard/NewsCard';
 import SearchComponent from '../../components/SearchComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../../infracstruture/Redux/store';
+import { fetchNews } from '../../../../infracstruture/Redux/slice/newsSlice';
 
 const NewsListings = () => {
-  const [news, setNews] = React.useState<[] | undefined>([]);
-  const [loading, setLoading] = React.useState(false);
-
+  const newsList = useSelector((state: RootState) => state.newsList);
+  const dispatch = useDispatch<AppDispatch>();
   React.useEffect(() => {
-    const getNews = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          'https://newsapi.org/v2/top-headlines?country=us&apiKey=ac80f53f243240ee8c057d031e1bee67',
-        );
-        const json = await response.json();
-        setNews(json);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-      }
-    };
-    getNews();
-  }, []);
+    dispatch(fetchNews());
+  }, [dispatch]);
+
+  const { loading, listOfNews } = newsList;
+
   if (loading) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -43,7 +34,7 @@ const NewsListings = () => {
         </View>
         <SearchComponent />
         <FlatList
-          data={news?.articles}
+          data={listOfNews}
           renderItem={({ item }) => <NewsCard newsItem={item} />}
           showsVerticalScrollIndicator={false}
         />

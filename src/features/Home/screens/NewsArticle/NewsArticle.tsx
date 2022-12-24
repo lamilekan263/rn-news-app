@@ -38,6 +38,7 @@ const NewsArticle = () => {
               />
             </Pressable>
             <View>
+              
               <Icon name="bookmark" size={30} color={theme.colors.white} />
             </View>
           </View>
