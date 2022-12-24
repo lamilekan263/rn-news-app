@@ -4,7 +4,7 @@ import { theme } from '../../../../infracstruture/theme';
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginVertical: theme.spacing.xl,
+    marginTop: theme.spacing.xl,
     backgroundColor: theme.colors.greyLighter,
     alignItems: 'center',
     justifyContent: 'center',

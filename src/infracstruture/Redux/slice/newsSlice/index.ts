@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchTopHeadlines } from './request';
 
 export type News = {
   source: {
@@ -26,22 +27,20 @@ const initialState: NewsListState = {
   error: false,
 };
 
-export const fetchNews = createAsyncThunk<{ listOfNews: News[] }>(
-  'fetchNews',
-  async () => {
-    const response = await fetch(
-      'https://newsapi.org/v2/top-headlines?country=us&apiKey=ac80f53f243240ee8c057d031e1bee67',
-    );
-    const json = await response.json();
-    if (response.ok) {
-      return {
-        listOfNews: json.articles ?? [],
-      };
-    } else {
-      throw 'Error fetching news';
-    }
-  },
-);
+export const fetchNews = createAsyncThunk<
+  { listOfNews: News[] },
+  { category: string }
+>('fetchNews', async category => {
+  const { response, json } = await fetchTopHeadlines(category);
+
+  if (response.ok) {
+    return {
+      listOfNews: json.articles ?? [],
+    };
+  } else {
+    throw 'Error fetching news';
+  }
+});
 
 const newsSlice = createSlice({
   name: 'newsList',
