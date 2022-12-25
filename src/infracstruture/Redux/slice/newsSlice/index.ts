@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchTopHeadlines } from './request';
+import { fetchTopHeadlines, filterNewsRequest } from './request';
 
 export type News = {
   source: {
@@ -42,6 +42,20 @@ export const fetchNews = createAsyncThunk<
   }
 });
 
+export const filterNews = createAsyncThunk(
+  'filterNews',
+  async (searchParams: string) => {
+    const { response, json } = await filterNewsRequest(searchParams);
+    if (response.ok) {
+      return {
+        listOfNews: json.articles,
+      };
+    } else {
+      throw 'Error Fetching news';
+    }
+  },
+);
+
 const newsSlice = createSlice({
   name: 'newsList',
   initialState,
@@ -58,6 +72,21 @@ const newsSlice = createSlice({
     builder.addCase(fetchNews.rejected, state => {
       state.loading = false;
       state.error = true;
+    });
+
+    // filter news
+    builder.addCase(filterNews.pending, state => {
+      state.loading = true;
+      state.error = undefined;
+    });
+
+    builder.addCase(filterNews.fulfilled, (state, { payload }) => {
+      state.listOfNews = payload.listOfNews;
+      state.loading = false;
+    });
+    builder.addCase(filterNews.rejected, state => {
+      state.error = true;
+      state.loading = false;
     });
   },
 });

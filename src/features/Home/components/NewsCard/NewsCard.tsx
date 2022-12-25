@@ -1,6 +1,7 @@
 import { View, ImageBackground, Pressable, Text } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '../../../../infracstruture/theme';

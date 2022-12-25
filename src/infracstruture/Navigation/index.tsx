@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { AppContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 import AuthNav from './AuthNav';
 import MainApp from './MainApp';
 
 const Navigation = (): React.ReactElement => {
-  const { isLoggedIn } = React.useContext(AppContext);
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
   return (
     <NavigationContainer>
       {isLoggedIn ? <MainApp /> : <AuthNav />}

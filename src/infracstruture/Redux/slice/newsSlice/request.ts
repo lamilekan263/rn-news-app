@@ -13,3 +13,16 @@ export const fetchTopHeadlines = async (category: string) => {
     json,
   };
 };
+
+export const filterNewsRequest = async (searchParams: string) => {
+  const response = await fetch(
+    `https://newsapi.org/v2/everything?q=${searchParams}&apiKey=ac80f53f243240ee8c057d031e1bee67`,
+  );
+
+  const json = await response.json();
+
+  return {
+    response,
+    json,
+  };
+};
