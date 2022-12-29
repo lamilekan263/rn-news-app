@@ -9,12 +9,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     marginBottom: theme.spacing.lg,
+    overflow: 'hidden',
+    borderRadius: 5,
   },
   content: {
-    justifyContent: 'space-between',
     height: '100%',
     padding: theme.spacing.xl,
     borderRadius: theme.spacing.xxl,
+    justifyContent: 'flex-end',
   },
   title: {
     color: 'white',

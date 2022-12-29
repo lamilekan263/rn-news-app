@@ -20,9 +20,6 @@ const NewsCard = ({ newsItem }) => {
         }}
         style={styles.imageBackground}>
         <View style={styles.content}>
-          <View style={styles.bookmarkIcon}>
-            <Icon name="bookmark" size={30} color={theme.colors.white} />
-          </View>
           <View>
             <Text style={styles.title}>{title}</Text>
           </View>

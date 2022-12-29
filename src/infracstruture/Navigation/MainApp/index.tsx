@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BookMark from '../../../features/Bookmark/screens';
 import Home from '../../../features/Home/screens';
-import Profile from '../../../features/Profile/screens';
+import Profile from '../../../features/Profile';
 import { theme } from '../../theme';
 
 const BottomNav = createBottomTabNavigator();

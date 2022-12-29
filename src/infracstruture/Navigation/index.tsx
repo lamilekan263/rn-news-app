@@ -1,15 +1,24 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { init } from '../Redux/slice/authSlice';
 import { RootState } from '../Redux/store';
 import AuthNav from './AuthNav';
 import MainApp from './MainApp';
 
 const Navigation = (): React.ReactElement => {
+  const { userToken } = useSelector((state: RootState) => state.auth);
+
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(init());
+  }, [isLoggedIn, dispatch]);
   return (
     <NavigationContainer>
-      {isLoggedIn ? <MainApp /> : <AuthNav />}
+      {userToken ? <MainApp /> : <AuthNav />}
     </NavigationContainer>
   );
 };

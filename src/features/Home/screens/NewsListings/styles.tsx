@@ -4,7 +4,6 @@ import { theme } from '../../../../infracstruture/theme';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.white,
     padding: theme.spacing.xl,
   },
   heading: {

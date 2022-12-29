@@ -1,10 +1,18 @@
-import { View, Text, ImageBackground, Pressable, Share } from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  Pressable,
+  StatusBar,
+} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { format } from 'date-fns';
 import styles from './styles';
 import { theme } from '../../../../infracstruture/theme';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { addNewBookmark } from '../../../../infracstruture/Redux/slice/bookmarkSlice';
+import { useDispatch } from 'react-redux';
+import { dateFormat } from '../../../../utils/utils';
 
 type DataType = {
   publishedAt: string;
@@ -19,9 +27,10 @@ const NewsArticle = () => {
 
   const { params } = route;
   const { publishedAt, title, content, urlToImage }: DataType = params.data;
-
+  const dispatch = useDispatch();
   return (
     <View>
+      <StatusBar translucent barStyle="light-content" backgroundColor="white" />
       <ImageBackground
         source={{
           uri: urlToImage,
@@ -37,10 +46,9 @@ const NewsArticle = () => {
                 color={theme.colors.white}
               />
             </Pressable>
-            <View>
-              
+            <Pressable onPress={() => dispatch(addNewBookmark(params.data))}>
               <Icon name="bookmark" size={30} color={theme.colors.white} />
-            </View>
+            </Pressable>
           </View>
         </View>
       </ImageBackground>
@@ -51,9 +59,7 @@ const NewsArticle = () => {
           <View>
             <View style={styles.dateContainer}>
               <Text>Published date</Text>
-              <Text style={styles.date}>
-                {format(new Date(publishedAt), 'MM/dd/yyyy')}
-              </Text>
+              <Text style={styles.date}>{dateFormat(publishedAt)}</Text>
             </View>
           </View>
         </View>

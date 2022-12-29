@@ -17,7 +17,6 @@ export default SafeAreaComponent;
 const styles = StyleSheet.create({
   safeAreaContainer: {
     flex: 1,
-    marginTop: StatusBar.currentHeight ? StatusBar.currentHeight : 50,
-    backgroundColor: theme.colors.white,
+    marginTop: StatusBar.currentHeight ? StatusBar.currentHeight : 0,
   },
 });
