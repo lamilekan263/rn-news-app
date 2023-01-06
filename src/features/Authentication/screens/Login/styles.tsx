@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     height: 55,
-    backgroundColor: theme.colors.greyLighter,
+    backgroundColor: theme.colors.white,
     marginVertical: theme.spacing.sm,
     borderRadius: theme.spacing.sm,
     paddingHorizontal: theme.spacing.md,

@@ -54,10 +54,11 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'loginUser',
-  async (details: LoginDetailsType) => {
+  async (details: LoginDetailsType, resetForm) => {
     const { response, json } = await login(details);
     if (response.ok) {
       deviceStorage.saveItem('token', json.token);
+      resetForm();
       return {
         isLoggedIn: true,
       };

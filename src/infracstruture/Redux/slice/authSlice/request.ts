@@ -40,6 +40,7 @@ export async function register(registerDetails) {
     body: JSON.stringify(registerDetails),
   });
   const json = await response.json();
+  console.log(json);
   return {
     response,
     json,

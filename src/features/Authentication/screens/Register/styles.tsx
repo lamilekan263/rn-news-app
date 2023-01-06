@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight ? StatusBar.currentHeight : 50,
     paddingHorizontal: theme.spacing.xl,
-    backgroundColor: theme.colors.white,
     position: 'relative',
   },
   welcomeText: {
@@ -22,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     height: 55,
-    backgroundColor: theme.colors.greyLighter,
+    backgroundColor: theme.colors.white,
     marginVertical: theme.spacing.sm,
     borderRadius: theme.spacing.sm,
     paddingHorizontal: theme.spacing.md,
