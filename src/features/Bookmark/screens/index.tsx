@@ -1,5 +1,5 @@
 import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import SafeAreaComponent from '../../../components/SafeAreaView';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../infracstruture/Redux/store';
@@ -18,8 +18,9 @@ const BookMark = () => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(fetchBookmarks());
+    
   }, [dispatch]);
 
   if (loading) {

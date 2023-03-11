@@ -13,12 +13,12 @@ const FilterComponent = () => {
     {
       id: 1,
       name: 'general',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'business',
-      selected: false,
+      selected: true,
     },
     {
       id: 3,
@@ -47,9 +47,8 @@ const FilterComponent = () => {
     },
   ];
 
-  const onSelect = (index: number) => {
-    // console.log(index);
-    // filterData.map((d, i) => (d.selected = i === index));
+  const onSelect = (index) => {
+    filterData.map((d) => (d.selected = d.id === index));
   };
 
   return (

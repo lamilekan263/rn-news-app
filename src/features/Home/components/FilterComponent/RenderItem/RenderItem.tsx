@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native';
+import {  Text, Pressable } from 'react-native';
 import React from 'react';
 import { RenderItemType } from '..';
 import styles from './styles';
@@ -9,10 +9,12 @@ import { useDispatch } from 'react-redux';
 const RenderItem = ({ item, onSelect }: RenderItemType) => {
   const dispatch = useDispatch();
 
-  const handleFetch = React.useCallback(
-    item => dispatch(fetchNews(item.name)),
-    [dispatch],
-  );
+  const handleFetch = (item) => {
+    onSelect(item.id)
+    dispatch(fetchNews(item.name));
+  }
+
+
   return (
     <Pressable
       style={[

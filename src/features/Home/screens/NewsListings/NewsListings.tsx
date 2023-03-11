@@ -17,7 +17,7 @@ const NewsListings = () => {
   }, [dispatch]);
 
   const { loading, listOfNews } = newsList;
-
+  
   return (
     <SafeAreaComponent>
       <View style={styles.container}>

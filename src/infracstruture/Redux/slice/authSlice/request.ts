@@ -21,7 +21,7 @@ export async function login(loginDetails: loginDetailsType) {
       body: JSON.stringify(loginDetails),
     });
     const json = await response.json();
-    console.log(json);
+
     return {
       response,
       json,
@@ -40,7 +40,7 @@ export async function register(registerDetails) {
     body: JSON.stringify(registerDetails),
   });
   const json = await response.json();
-  console.log(json);
+
   return {
     response,
     json,
@@ -57,7 +57,7 @@ export async function fetcUserDetailsRequest() {
     },
   });
   const json = await response.json();
-  console.log(json);
+
   return {
     response,
     json,
